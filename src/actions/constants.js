@@ -1,0 +1,6 @@
+export default {
+  CONTENT_TYPE: {
+    COMICS: 'FETCH_COMICS',
+    CHARACTERS: 'FETCH_CHARACTERS'
+  }
+};
