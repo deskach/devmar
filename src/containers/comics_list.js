@@ -34,7 +34,9 @@ class ComicsList extends Component {
 
     var tbody = "";
     if (this.props.comics) {
+      console.log(this.props.comics);
       tbody = this.props.comics.data.results.map(this.renderComics);
+      console.log('here');
     }
 
     return (
@@ -53,8 +55,8 @@ class ComicsList extends Component {
     );
   }
 
-  static mapStateToProps({comics}) {
-    return {comics};
+  static mapStateToProps({content}) {
+    return {comics: content.comics};
   }
 }
 
