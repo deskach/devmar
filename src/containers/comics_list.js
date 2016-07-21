@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {doFetchContent} from '../actions/index';
+import actionConstants from '../actions/constants';
 
 class ComicsList extends Component {
   constructor() {
     super();
 
     this.renderComics = this.renderComics.bind(this);
+  }
+
+  componentWillMount() {
+    //this function is called when the component is about to be rendered the 1st time
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '');
   }
 
   renderComics(comicsData) {
@@ -58,6 +66,10 @@ class ComicsList extends Component {
   static mapStateToProps({content}) {
     return {comics: content.comics};
   }
+
+  static mapDispatchToProps(dispatch) {
+    return bindActionCreators({doFetchContent}, dispatch);
+  }
 }
 
-export default connect(ComicsList.mapStateToProps)(ComicsList);
+export default connect(ComicsList.mapStateToProps, ComicsList.mapDispatchToProps)(ComicsList);
