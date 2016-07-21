@@ -1,3 +1,8 @@
 .input-group {
     margin: 20px 0;
 }
+
+.filtering-button {
+    margin-right: 1em;
+    margin-top: 0.5em;
+}
