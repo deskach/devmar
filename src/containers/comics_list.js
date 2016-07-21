@@ -11,7 +11,8 @@ class ComicsList extends Component {
   renderComics(comicsData) {
     const key = comicsData.id;
     const title = comicsData.title;
-    const resourceURI = comicsData.resourceURI;
+    const series = comicsData.series.name;
+    const characters = comicsData.characters.items.map(c => { return c.name + '; '; } );
 
     return (
       <tr key={key}>
@@ -19,7 +20,10 @@ class ComicsList extends Component {
           <span>{title}</span>
         </th>
         <td>
-          <span>{resourceURI}</span>
+          <span>{characters}</span>
+        </td>
+        <td>
+          <span>{series}</span>
         </td>
       </tr>
     )
@@ -38,7 +42,8 @@ class ComicsList extends Component {
         <thead>
         <tr>
           <th>Title</th>
-          <th>Format</th>
+          <th>Characters</th>
+          <th>Series</th>
         </tr>
         </thead>
         <tbody>
