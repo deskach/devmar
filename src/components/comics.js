@@ -4,7 +4,7 @@ import SearchBar from '../containers/search_bar';
 import ComicsList from '../containers/comics_list';
 import actionConstants from '../actions/constants';
 
-export default class App extends React.Component {
+export default class Comics extends React.Component {
   render() {
     return (
       <div>
