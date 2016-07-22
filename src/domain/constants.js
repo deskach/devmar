@@ -8,5 +8,11 @@ export default {
       TYPE_NAME: 'CHARACTERS',
       URL: 'characters'
     }
+  },
+
+  FILTER_TYPES: {
+    ALL: 'ALL',
+    BY_CHARACTER: 'BY_CHARACTER',
+    BY_SERIES: 'BY_SERIES'
   }
 };

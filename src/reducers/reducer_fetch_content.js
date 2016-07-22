@@ -8,7 +8,7 @@ export default (state = INITIAL_STATE, action) => {
       console.log(`reducing CHARACTERS`);
       return {...state, characters: action.payload.data};
     case actionConstants.CONTENT_TYPE.COMICS:
-      console.log(`reducing COMICS`);
+      console.log(`reducing COMICS payload = ${action.payload}`);
       return {...state, comics: action.payload.data};
   }
 

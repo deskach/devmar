@@ -14,6 +14,7 @@ export function doFetchContent(contentType, term, filterBy) {
 
   console.log(contentType);
   const request = fetchData(contentType2dataType[contentType], term, filterBy);
+  console.log("data has been fetched");
 
   return {
     type: contentType,
