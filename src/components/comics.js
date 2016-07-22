@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import SearchBar from '../containers/search_bar';
 import ComicsList from '../containers/comics_list';
 import actionConstants from '../actions/constants';
-import componentConstants from './constants';
+import componentConstants from '../domain/services/constants';
 import {doFilterBy} from '../actions/index';
 
 class Comics extends React.Component {
