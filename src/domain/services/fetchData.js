@@ -11,6 +11,8 @@ export function fetchData(dataType, term, filterBy) {
   const subUrl = domainConstants.DATA_TYPE[dataType].URL;
   var url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${API_PUBLIC_KEY}&ts=${ts}&hash=${md5sum}`;
 
+  // if(term && filterBy == )
+
   console.log('Fetching ' + dataType);
 
   return axios.get(url);
