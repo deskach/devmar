@@ -34,13 +34,13 @@ class CharacterList extends Component {
   }
 
   render() {
-    console.log("Creating list of characters from " + this.props.characters);
+    //console.log("Creating list of characters from " + this.props.characters);
 
     var tbody = "";
     if (this.props.characters) {
-      console.log(this.props.characters);
+      //console.log(this.props.characters);
       tbody = this.props.characters.data.results.map(this.renderCharacters);
-      console.log('here');
+      //console.log('here');
     }
 
     return (

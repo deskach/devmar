@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
   onFormSubmit(event) {
     event.preventDefault();
 
-    console.log("FILTERING BY " + this.props.filterBy);
+    //console.log("FILTERING BY " + this.props.filterBy);
 
     this.props.doFetchContent(this.state.contentType, this.state.term, this.props.filterBy);
     this.setState({term: ''});

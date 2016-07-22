@@ -6,7 +6,7 @@ const API_PRIVATE_KEY = '0679e7d83403d17ef55fa279ad810cab3185637a';
 const API_PUBLIC_KEY = 'd91bd8f116c1514085350241b4a42daf';
 
 export function fetchData(dataType, term, filterBy) {
-  console.log('Fetching ' + dataType);
+  //console.log('Fetching ' + dataType);
 
   var ts = Date.now();
   var md5sum = md5(ts + API_PRIVATE_KEY + API_PUBLIC_KEY);
@@ -19,9 +19,9 @@ export function fetchData(dataType, term, filterBy) {
     url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${API_PUBLIC_KEY}&ts=${ts}&hash=${md5sum}&name=${processedTerm}`;
 
     return axios.get(url).then((response) => {
-      console.log("retrieving id");
+      //console.log("retrieving id");
       var id = response.data.data.results[0].id;
-      console.log("ID = " + id);
+      //console.log("ID = " + id);
 
       subUrl = domainConstants.DATA_TYPE.COMICS.URL;
       url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${API_PUBLIC_KEY}&ts=${ts}&hash=${md5sum}&characters=${id}`;
@@ -32,9 +32,9 @@ export function fetchData(dataType, term, filterBy) {
     url = `http://gateway.marvel.com/v1/public/series?apikey=${API_PUBLIC_KEY}&ts=${ts}&hash=${md5sum}&titleStartsWith=${processedTerm}`;
 
     return axios.get(url).then((response) => {
-      console.log("retrieving series id ", response.data );
+      //console.log("retrieving series id ", response.data );
       var ids = response.data.data.results.map(r => { return r.id; }).join(',');
-      console.log("series IDs = ", ids);
+      //console.log("series IDs = ", ids);
 
       subUrl = domainConstants.DATA_TYPE.COMICS.URL;
       url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${API_PUBLIC_KEY}&ts=${ts}&hash=${md5sum}&series=${ids}`;

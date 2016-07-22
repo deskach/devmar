@@ -38,13 +38,13 @@ class ComicsList extends Component {
   }
 
   render() {
-    console.log("Creating list of comics from " + this.props.comics);
+    //console.log("Creating list of comics from " + this.props.comics);
 
     var tbody = "";
     if (this.props.comics) {
-      console.log(this.props.comics);
+      //console.log(this.props.comics);
       tbody = this.props.comics.data.results.map(this.renderComics);
-      console.log('here');
+      //console.log('here');
     }
 
     return (
