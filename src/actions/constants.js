@@ -2,5 +2,6 @@ export default {
   CONTENT_TYPE: {
     COMICS: 'FETCH_COMICS',
     CHARACTERS: 'FETCH_CHARACTERS'
-  }
+  },
+  FILTER_BY: 'FILTER_BY'
 };

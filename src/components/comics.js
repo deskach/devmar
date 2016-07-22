@@ -1,10 +1,12 @@
 import React from 'react';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import SearchBar from '../containers/search_bar';
 import ComicsList from '../containers/comics_list';
 import actionConstants from '../actions/constants';
+import {doFilterBy} from '../actions/index';
 
-export default class Comics extends React.Component {
+class Comics extends React.Component {
   static FILTER_TYPES = {
     ALL: 'ALL',
     BY_CHARACTER: 'BY_CHARACTER',
@@ -20,7 +22,8 @@ export default class Comics extends React.Component {
   }
 
   onFilterChange(event) {
-    this.setState({filterBy: event.target.value});
+    console.log('Comics.onFilterChange');
+    this.props.doFilterBy(event.target.value);
   }
 
   render() {
@@ -34,10 +37,16 @@ export default class Comics extends React.Component {
           </select>
         </div>
         <div className="col-xs-10 pull-xs-right">
-          <SearchBar contentType={ actionConstants.CONTENT_TYPE.COMICS } />
+          <SearchBar contentType={ actionConstants.CONTENT_TYPE.COMICS } filterBy = { this.state.filterBy } />
         </div>
         <ComicsList />
       </div>
     );
   }
+
+  static mapDispatchToProps(dispatch) {
+    return bindActionCreators({doFilterBy}, dispatch);
+  }
 }
+
+export default connect(null, Comics.mapDispatchToProps)(Comics);

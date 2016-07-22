@@ -23,7 +23,9 @@ class SearchBar extends React.Component {
   onFormSubmit(event) {
     event.preventDefault();
 
-    this.props.doFetchContent(this.state.contentType, this.state.term);
+    console.log("FILTERING BY " + this.props.filterBy);
+
+    this.props.doFetchContent(this.state.contentType, this.state.term, this.props.filterBy);
     this.setState({term: ''});
   }
 
@@ -45,6 +47,12 @@ class SearchBar extends React.Component {
   static mapDispatchToProps(dispatch) {
     return bindActionCreators({doFetchContent}, dispatch);
   }
+
+  static mapStateToProps(state) {
+    return {
+      filterBy: state.filterBy
+    };
+  }
 }
 
-export default connect(null, SearchBar.mapDispatchToProps)(SearchBar);
+export default connect(SearchBar.mapStateToProps, SearchBar.mapDispatchToProps)(SearchBar);
