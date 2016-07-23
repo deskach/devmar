@@ -20,15 +20,17 @@ class CharacterList extends Component {
     const key = characterData.id;
     const name = characterData.name;
     const description = characterData.description;
+    const url = `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`;
 
     return (
-      <tr key={key}>
-        <th scope="row">
-          <span>{name}</span>
-        </th>
+      <tr key={key} className="clickable" id=${key} >
         <td>
-          <span>{description}</span>
+          <div className="text-xs-center">{name}</div>
+          <img className="img-thumbnail avatar" src={url}  />
         </td>
+        <th scope="row">
+          <span>{description}</span>
+        </th>
       </tr>
     )
   }
@@ -47,7 +49,7 @@ class CharacterList extends Component {
       <table className="table table-hover table-sm">
         <thead>
         <tr>
-          <th>Name</th>
+          <th>Character</th>
           <th>Description</th>
         </tr>
         </thead>

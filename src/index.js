@@ -9,7 +9,7 @@ import reducers from './reducers';
 import routes from './routes';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-//^if the payload is a promise redux_promise will wait for the response and put it in place (see doFetchContent action)
+//^if the payload is a promise redux_promise will wait for the response to finish
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
