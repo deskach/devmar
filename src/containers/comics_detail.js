@@ -1,9 +1,12 @@
 import React from "react";
+import {connect} from "react-redux";
 
 class ComicsDetail extends React.Component {
   render() {
     return (
-      <div>Hi there</div>
+      <div>Hello World!\n</div>
     )
   }
 }
+
+export default connect(null, null)(ComicsDetail);
