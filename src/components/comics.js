@@ -17,7 +17,7 @@ class Comics extends React.Component {
   }
 
   onFilterChange(event) {
-    //console.log('Comics.onFilterChange');
+    console.log('Comics.onFilterChange');
     this.props.doFilterBy(event.target.value);
   }
 

@@ -5,14 +5,14 @@ const INITIAL_STATE = {comics: {data: {results: []}}, characters: {data: {result
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionConstants.CONTENT_TYPE.CHARACTERS:
-      //console.log(`reducing CHARACTERS`);
+      console.log(`reducing CHARACTERS`);
       return {...state, characters: action.payload.data};
     case actionConstants.CONTENT_TYPE.COMICS:
-      //console.log(`reducing COMICS payload = ${action.payload}`);
+      console.log(`reducing COMICS payload = ${action.payload}`);
       return {...state, comics: action.payload.data};
   }
 
-  //console.log(action.type);
+  console.log(action.type);
 
   return state;
 }

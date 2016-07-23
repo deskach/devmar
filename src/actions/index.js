@@ -6,15 +6,15 @@ export function doFetchContent(contentType, term, filterBy) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
 
-  //console.log("contentType  = " + contentType);
+  console.log("contentType  = " + contentType);
 
   var contentType2dataType = { };
   contentType2dataType[CT.COMICS] =  DT.COMICS.TYPE_NAME;
   contentType2dataType[CT.CHARACTERS] = DT.CHARACTERS.TYPE_NAME;
 
-  //console.log(contentType);
+  console.log(contentType);
   const request = fetchData(contentType2dataType[contentType], term, filterBy);
-  //console.log("data has been fetched");
+  console.log("data has been fetched");
 
   return {
     type: contentType,
@@ -23,7 +23,7 @@ export function doFetchContent(contentType, term, filterBy) {
 }
 
 export function doFilterBy(filterBy) {
-  //console.log(`doFilterBy(${filterBy})`);
+  console.log(`doFilterBy(${filterBy})`);
 
   return {
     type: actionConstants.FILTER_BY,
