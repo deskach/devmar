@@ -1,5 +1,5 @@
 import axios from "axios";
-import md5 from "../utils/md5baseJS";
+import md5 from "../vendor/md5baseJS";
 import domainConstants from "../constants";
 
 export function fetchData(dataType, term, filterBy) {

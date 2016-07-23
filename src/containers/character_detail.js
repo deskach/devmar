@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {doFetchCharacterByName} from "../actions/index";
+import {getRandomKey} from "../domain/utils";
 
 class CharacterDetail extends React.Component {
   componentWillMount() {
@@ -8,33 +9,51 @@ class CharacterDetail extends React.Component {
   }
 
   render() {
-    console.log(this.props.characterDetails);
+    const details = this.props.characterDetails;
 
-    return (
-      <div className="container article">
-        <h1 className="info">Character details</h1>
-        <img className="img-thumbnail avatar pull-xs-left"
-             src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"/>
+    if (details) {
+      const results = details.data.data.results[0];
+      const imgSrc = `${results.thumbnail.path}.${results.thumbnail.extension}`;
+      const name = results.name;
+      const description = results.description;
+      const notAvailable = "Not available :o(";
+      const series = results.series.items.map((item) => {
+        return (<li key={getRandomKey()}>{item.name}</li>)
+      });
+      const comics = results.comics.items.map((item) => {
+        return (<li key={getRandomKey()}>{item.name}</li>)
+      });
+      const events = results.events.items.map((item) => {
+        return (<li key={getRandomKey()}>{item.name}</li>)
+      });
+
+      return (
         <div>
-          <span className="text-xs-large"><strong>Name:</strong>&nbsp;3-D Man</span>
-          <br/>
-          <span className="text-xs-large"><strong>Series:</strong>&nbsp;Avengers: The Initiative (2007) #19</span>
-          <br/>
-          <p>
-            <strong className="text-xs-large">Description:</strong>&nbsp;
-            Join 3-D MAN, CLOUD 9, KOMODO, HARDBALL, and
-            heroes around America in the battle that will decide the fate of the planet and the future of the
-            Initiative program. Will the Kill Krew Army win the day?\n
-          </p>
-          <p>
-            <strong className="text-xs-large">Related characters:</strong>&nbsp;Ant-Man (Eric O'Grady), Avengers, Bengal
-          </p>
-          <p>
-            <strong className="text-xs-large">Creators:</strong>&nbsp;Mahmud Asrar, Bong Dazo, Rebecca Buchman
-          </p>
+          <h1 className="info">Character details</h1>
+          <img className="avatar-detailed img-thumbnail pull-xs-right" src={imgSrc}/>
+          <div>
+            <p className="text-xs-large"><strong>Name:</strong>&nbsp;{name}</p>
+            <p>
+              <strong className="text-xs-large">Description:</strong>&nbsp;{description ? description : notAvailable}
+            </p>
+            <div>
+              <strong className="text-xs-large">Series:</strong>
+              <ul className="list-unstyled">{series.length ? series : notAvailable}</ul>
+            </div>
+            <div>
+              <strong className="text-xs-large">Comics:</strong>
+              <ul className="list-unstyled">{comics.length ? comics : notAvailable}</ul>
+            </div>
+            <div>
+              <strong className="text-xs-large">Events:</strong>
+              <ul className="list-unstyled">{events.length ? events : notAvailable}</ul>
+            </div>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+
+    return <div>Loading...</div>
   }
 
   static mapStateToProps({characterDetails}) {
