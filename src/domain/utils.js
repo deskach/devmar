@@ -1,9 +1,9 @@
 import domainConstants from "./constants";
+import md5 from "./vendor/md5baseJS";
 
 export function getRandomKey() {
-  return this._counter++;
+  return Math.ceil(Math.random() * 10E15);
 }
-getRandomKey.prototype._counter = 0;
 
 export function getSignedUrl4Collection(collection, args = {}) {
   const ASK = domainConstants.API_SECRET_KEY;
