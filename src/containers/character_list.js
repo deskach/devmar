@@ -5,6 +5,10 @@ import {doFetchContent} from '../actions/index';
 import actionConstants from '../actions/constants';
 
 class CharacterList extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  };
+
   constructor() {
     super();
 
@@ -17,20 +21,20 @@ class CharacterList extends Component {
   }
 
   renderCharacters(characterData) {
-    const key = characterData.id;
+    const id = characterData.id;
     const name = characterData.name;
     const description = characterData.description;
     const url = `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`;
 
     return (
-      <tr key={key} className="clickable" id=${key} >
+      <tr key={id} id={id} className="clickable" onClick={() => this.context.router.push(`characters/${id}`)}>
         <td>
-          <div className="text-xs-center">{name}</div>
-          <img className="img-thumbnail avatar" src={url}  />
+          <img className="img-thumbnail avatar" src={url}/>
         </td>
-        <th scope="row">
-          <span>{description}</span>
-        </th>
+        <td>
+          <span className="text-xs-center text-xs-large">{name}</span>
+          <p>{description}</p>
+        </td>
       </tr>
     )
   }
@@ -46,9 +50,9 @@ class CharacterList extends Component {
     }
 
     return (
-      <table className="table table-hover table-sm">
+      <table className="table table-hover table-sm" id="table-characters" >
         <thead>
-        <tr>
+        <tr className="text-xs-large">
           <th>Character</th>
           <th>Description</th>
         </tr>
@@ -57,7 +61,7 @@ class CharacterList extends Component {
         {tbody}
         </tbody>
       </table>
-    );
+  );
   }
 
   static mapStateToProps({content}) {
@@ -67,6 +71,6 @@ class CharacterList extends Component {
   static mapDispatchToProps(dispatch) {
     return bindActionCreators({doFetchContent}, dispatch);
   }
-}
+  }
 
-export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList);
+  export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList);

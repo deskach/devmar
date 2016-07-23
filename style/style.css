@@ -8,9 +8,22 @@
 }
 
 .avatar {
-    width: 400px;
+    width: 200px;
+    margin-right: 1em;
 }
 
 .clickable {
     cursor: pointer;
+}
+
+.article {
+    margin: 1em 1em 1em 1em;
+}
+
+.text-xs-large {
+    font-size: x-large;
+}
+
+#table-characters tr td:first-child {
+    width: 25%;
 }
