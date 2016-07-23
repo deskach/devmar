@@ -12,7 +12,5 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, comics: action.payload.data};
   }
 
-  console.log(action.type);
-
   return state;
 }

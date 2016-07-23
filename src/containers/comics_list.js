@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {doFetchContent} from '../actions/index';
-import actionConstants from '../actions/constants';
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {doFetchContent} from "../actions/index";
+import actionConstants from "../actions/constants";
 
 class ComicsList extends Component {
   constructor() {
@@ -12,7 +12,6 @@ class ComicsList extends Component {
   }
 
   componentWillMount() {
-    //this function is called when the component is about to be rendered the 1st time
     this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '');
   }
 
@@ -38,15 +37,6 @@ class ComicsList extends Component {
   }
 
   render() {
-    console.log("Creating list of comics from " + this.props.comics);
-
-    var tbody = "";
-    if (this.props.comics) {
-      console.log(this.props.comics);
-      tbody = this.props.comics.data.results.map(this.renderComics);
-      console.log('here');
-    }
-
     return (
       <table className="table table-hover table-sm">
         <thead>
@@ -57,7 +47,7 @@ class ComicsList extends Component {
         </tr>
         </thead>
         <tbody>
-        {tbody}
+        {this.props.comics ? this.props.comics.data.results.map(this.renderComics) : ""}
         </tbody>
       </table>
     );

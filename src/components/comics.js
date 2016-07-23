@@ -1,11 +1,11 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import SearchBar from '../containers/search_bar';
-import ComicsList from '../containers/comics_list';
-import actionConstants from '../actions/constants';
-import domainConstants from '../domain/constants';
-import {doFilterBy} from '../actions/index';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import SearchBar from "../containers/search_bar";
+import ComicsList from "../containers/comics_list";
+import actionConstants from "../actions/constants";
+import domainConstants from "../domain/constants";
+import {doFilterBy} from "../actions/index";
 
 class Comics extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class Comics extends React.Component {
   }
 
   onFilterChange(event) {
-    console.log('Comics.onFilterChange');
     this.props.doFilterBy(event.target.value);
   }
 

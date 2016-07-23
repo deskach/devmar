@@ -1,10 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {doFetchCharacterById} from "../actions/index";
+import React from "react";
+import {connect} from "react-redux";
+import {doFetchCharacterByName} from "../actions/index";
 
 class CharacterDetail extends React.Component {
   componentWillMount() {
-    this.props.doFetchCharacterById(this.props.params.id);
+    this.props.doFetchCharacterByName(this.props.params.id);
   }
 
   render() {
@@ -42,4 +42,4 @@ class CharacterDetail extends React.Component {
   }
 }
 
-export default connect(CharacterDetail.mapStateToProps, {doFetchCharacterById})(CharacterDetail);
+export default connect(CharacterDetail.mapStateToProps, {doFetchCharacterByName})(CharacterDetail);

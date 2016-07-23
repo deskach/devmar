@@ -1,12 +1,15 @@
 import {fetchData} from "../domain/services/fetchData";
-import actionConstants from './constants';
-import domainConstants from '../domain/constants';
+import actionConstants from "./constants";
+import domainConstants from "../domain/constants";
+import fetchCharacterByName from "../domain/services/fetchCharacter";
 
-export function doFetchCharacterById(id) {
+export function doFetchCharacterByName(name) {
+  console.log(`doFetchCharacterByName(${name})`);
+  const request = fetchCharacterByName(name);
 
   return {
     type: actionConstants.FETCH_CHAR_BY_ID,
-    payload: "testing Fetching Char by Id"
+    payload: request
   }
 }
 
@@ -14,15 +17,13 @@ export function doFetchContent(contentType, term, filterBy) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
 
-  console.log("contentType  = " + contentType);
+  console.log(`doFetchContent(${contentType})`);
 
   var contentType2dataType = { };
   contentType2dataType[CT.COMICS] =  DT.COMICS.TYPE_NAME;
   contentType2dataType[CT.CHARACTERS] = DT.CHARACTERS.TYPE_NAME;
 
-  console.log(contentType);
   const request = fetchData(contentType2dataType[contentType], term, filterBy);
-  console.log("data has been fetched");
 
   return {
     type: contentType,

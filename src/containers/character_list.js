@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {doFetchContent} from '../actions/index';
-import actionConstants from '../actions/constants';
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {doFetchContent} from "../actions/index";
+import actionConstants from "../actions/constants";
 
 class CharacterList extends Component {
   static contextTypes = {
@@ -16,7 +16,6 @@ class CharacterList extends Component {
   }
 
   componentWillMount() {
-    //this function is called when the component is about to be rendered the 1st time
     this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, '');
   }
 
@@ -27,7 +26,7 @@ class CharacterList extends Component {
     const url = `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`;
 
     return (
-      <tr key={id} id={id} className="clickable" onClick={() => this.context.router.push(`characters/${id}`)}>
+      <tr key={id} id={id} className="clickable" onClick={() => this.context.router.push(`characters/${name}`)}>
         <td>
           <img className="img-thumbnail avatar" src={url}/>
         </td>
@@ -40,15 +39,6 @@ class CharacterList extends Component {
   }
 
   render() {
-    console.log("Creating list of characters from " + this.props.characters);
-
-    var tbody = "";
-    if (this.props.characters) {
-      console.log(this.props.characters);
-      tbody = this.props.characters.data.results.map(this.renderCharacters);
-      console.log('here');
-    }
-
     return (
       <table className="table table-hover table-sm" id="table-characters">
         <thead>
@@ -58,7 +48,7 @@ class CharacterList extends Component {
         </tr>
         </thead>
         <tbody>
-        {tbody}
+        {this.props.characters ? this.props.characters.data.results.map(this.renderCharacters) : ""}
         </tbody>
       </table>
     );

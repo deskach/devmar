@@ -1,4 +1,6 @@
-export default (string) => {
+import domainConstants from "../constants";
+
+export default function md5(string) {
 
   function cmn(q, a, b, x, s, t) {
     a = add32(add32(a, q), add32(x, t));
@@ -185,4 +187,21 @@ export default (string) => {
   }
 
   return hex(md51(string));
+}
+
+export function getSignedUrl4Collection(collection, args = {}) {
+  const ASK = domainConstants.API_SECRET_KEY;
+  const APK = domainConstants.API_PUBLIC_KEY;
+
+  var ts = Date.now();
+  var md5sum = md5(ts + ASK + APK);
+  var url = `http://gateway.marvel.com/v1/public/${collection}?apikey=${APK}&ts=${ts}&hash=${md5sum}`;
+
+  for (var key in args) {
+    if (args.hasOwnProperty(key)) {
+      url += `&${key}=${args[key]}`;
+    }
+  }
+
+  return url;
 }
