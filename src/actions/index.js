@@ -2,13 +2,24 @@ import {fetchData} from "../domain/services/fetchData";
 import actionConstants from "./constants";
 import domainConstants from "../domain/constants";
 import fetchCharacterByName from "../domain/services/fetchCharacter";
+import fetchComicById from "../domain/services/fetch_comics";
 
 export function doFetchCharacterByName(name) {
   console.log(`doFetchCharacterByName(${name})`);
   const request = fetchCharacterByName(name);
 
   return {
-    type: actionConstants.FETCH_CHAR_BY_ID,
+    type: actionConstants.FETCH_CHAR_BY_NAME,
+    payload: request
+  }
+}
+
+export function doFetchComicById(id) {
+  console.log(`doFetchComicById(${id})`);
+  const request = fetchComicById(id);
+
+  return {
+    type: actionConstants.FETCH_COMIC_BY_ID,
     payload: request
   }
 }
