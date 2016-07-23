@@ -29,6 +29,10 @@
     font-size: x-large;
 }
 
-#table-characters tr td:first-child {
+.table-1st-col-25 tr td:first-child {
     width: 25%;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 1em;
 }

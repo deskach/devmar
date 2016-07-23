@@ -40,7 +40,7 @@ class CharacterList extends Component {
 
   render() {
     return (
-      <table className="table table-hover table-sm" id="table-characters">
+      <table className="table table-hover table-sm table-1st-col-25">
         <thead>
         <tr className="text-xs-large">
           <th>Character</th>

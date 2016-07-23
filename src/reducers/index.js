@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   content: ContentReducer,
   filterBy: FilterByReducer,
   characterDetails: CharacterByIdReducer,
-  comicDetail: ComicByIdReducer
+  comicDetails: ComicByIdReducer
 });
 
 export default rootReducer;

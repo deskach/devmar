@@ -5,6 +5,10 @@ import {doFetchContent} from "../actions/index";
 import actionConstants from "../actions/constants";
 
 class ComicsList extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  };
+
   constructor() {
     super();
 
@@ -16,41 +20,44 @@ class ComicsList extends Component {
   }
 
   renderComics(comicsData) {
-    const key = comicsData.id;
+    const id = comicsData.id;
     const title = comicsData.title;
-    const series = comicsData.series.name;
-    const characters = comicsData.characters.items.map(c => { return c.name + '; '; } );
+    const description = comicsData.description;
+    const url = `${comicsData.thumbnail.path}.${comicsData.thumbnail.extension}`;
 
     return (
-      <tr key={key}>
-        <th scope="row">
-          <span>{title}</span>
-        </th>
+      <tr key={id} className="clickable" onClick={() => this.context.router.push(`comics/${id}`)}>
         <td>
-          <span>{characters}</span>
+          <img className="img-thumbnail avatar" src={url}/>
         </td>
         <td>
-          <span>{series}</span>
+          <span className="text-xs-center text-xs-large">{title}</span>
+          <p>{description}</p>
         </td>
       </tr>
     )
   }
 
   render() {
-    return (
-      <table className="table table-hover table-sm">
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Characters</th>
-          <th>Series</th>
-        </tr>
-        </thead>
-        <tbody>
-        {this.props.comics ? this.props.comics.data.results.map(this.renderComics) : ""}
-        </tbody>
-      </table>
-    );
+    var comics = this.props.comics;
+
+    if (comics) {
+      return (
+        <table className="table table-hover table-sm table-1st-col-25">
+          <thead>
+          <tr className="text-xs-large">
+            <th>Comic</th>
+            <th>Title</th>
+          </tr>
+          </thead>
+          <tbody>
+          {comics.data.results.map(this.renderComics)}
+          </tbody>
+        </table>
+      );
+    }
+
+    return <div>Loading...</div>
   }
 
   static mapStateToProps({content}) {

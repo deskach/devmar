@@ -6,6 +6,7 @@ export default function fetchComicById(id) {
   console.log(`Fetching comic with id '${id}'`);
 
   var url = getSignedUrl4Collection(`comics/${id}`);
+  console.log(url);
 
   return axios.get(url);
 }
