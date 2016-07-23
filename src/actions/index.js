@@ -2,6 +2,14 @@ import {fetchData} from "../domain/services/fetchData";
 import actionConstants from './constants';
 import domainConstants from '../domain/constants';
 
+export function doFetchCharacterById(id) {
+
+  return {
+    type: actionConstants.FETCH_CHAR_BY_ID,
+    payload: "testing Fetching Char by Id"
+  }
+}
+
 export function doFetchContent(contentType, term, filterBy) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;

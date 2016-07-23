@@ -1,7 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {doFetchCharacterById} from "../actions/index";
 
-export class CharacterDetail extends React.Component {
+class CharacterDetail extends React.Component {
+  componentWillMount() {
+    this.props.doFetchCharacterById(this.props.params.id);
+  }
+
   render() {
+    console.log(this.props.characterDetails);
+
     return (
       <div className="container article">
         <h1 className="info">Character details</h1>
@@ -28,4 +36,10 @@ export class CharacterDetail extends React.Component {
       </div>
     )
   }
+
+  static mapStateToProps({characterDetails}) {
+    return {characterDetails};
+  }
 }
+
+export default connect(CharacterDetail.mapStateToProps, {doFetchCharacterById})(CharacterDetail);

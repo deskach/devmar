@@ -4,7 +4,7 @@ import {Route, IndexRoute} from 'react-router';
 import App from './components/app';
 import Comics from './components/comics';
 import Characters from './components/characters';
-import {CharacterDetail} from "./components/character_detail";
+import CharacterDetail from "./containers/character_detail";
 
 export default (
   <Route path="/" component={App}>

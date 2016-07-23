@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import ContentReducer from './reducer_fetch_content';
 import FilterByReducer from './reducer_filter_by';
+import CharacterByIdReducer from './reducer_fetch_char_by_id'
 
 const rootReducer = combineReducers({
   content: ContentReducer,
-  filterBy: FilterByReducer
+  filterBy: FilterByReducer,
+  characterDetails: CharacterByIdReducer
 });
 
 export default rootReducer;

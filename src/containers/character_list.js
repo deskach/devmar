@@ -50,7 +50,7 @@ class CharacterList extends Component {
     }
 
     return (
-      <table className="table table-hover table-sm" id="table-characters" >
+      <table className="table table-hover table-sm" id="table-characters">
         <thead>
         <tr className="text-xs-large">
           <th>Character</th>
@@ -61,7 +61,7 @@ class CharacterList extends Component {
         {tbody}
         </tbody>
       </table>
-  );
+    );
   }
 
   static mapStateToProps({content}) {
@@ -71,6 +71,6 @@ class CharacterList extends Component {
   static mapDispatchToProps(dispatch) {
     return bindActionCreators({doFetchContent}, dispatch);
   }
-  }
+}
 
-  export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList);
+export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList);
