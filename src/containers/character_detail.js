@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
-import {doFetchCharacterByName} from "../actions/index";
+import {doFetchCharacterById} from "../actions/index";
 import {getRandomKey} from "../domain/utils";
 
 class CharacterDetail extends React.Component {
   componentWillMount() {
-    this.props.doFetchCharacterByName(this.props.params.id);
+    this.props.doFetchCharacterById(this.props.params.id);
   }
 
   render() {
@@ -60,4 +60,4 @@ class CharacterDetail extends React.Component {
   }
 }
 
-export default connect(CharacterDetail.mapStateToProps, {doFetchCharacterByName})(CharacterDetail);
+export default connect(CharacterDetail.mapStateToProps, {doFetchCharacterById})(CharacterDetail);

@@ -2,12 +2,12 @@ import {fetchData} from "../domain/services/fetchData";
 import actionConstants from "./constants";
 import domainConstants from "../domain/constants";
 
-export function doFetchCharacterByName(name) {
-  console.log(`doFetchCharacterByName(${name})`);
-  const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}/${name}`);
+export function doFetchCharacterById(id) {
+  console.log(`doFetchCharacterById(${id})`);
+  const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}/${id}`);
 
   return {
-    type: actionConstants.FETCH_CHAR_BY_NAME,
+    type: actionConstants.FETCH_CHAR_BY_ID,
     payload: request
   }
 }

@@ -4,7 +4,7 @@ import actionConstants from "../actions/constants";
 const rootReducer = combineReducers({
   content: ContentReducer,
   filterBy: SimplePayloadReducer(actionConstants.FILTER_BY),
-  characterDetails: SimplePayloadReducer(actionConstants.FETCH_CHAR_BY_NAME),
+  characterDetails: SimplePayloadReducer(actionConstants.FETCH_CHAR_BY_ID),
   comicDetails: SimplePayloadReducer(actionConstants.FETCH_COMIC_BY_ID),
   queryParams: SimplePayloadReducer(actionConstants.SET_QUERY_PARAMS)
 });
