@@ -23,7 +23,7 @@ export function fetchData(subUrl, options = {}) {
   var subUrl = domainConstants.DATA_TYPE[dataType].URL;
   var url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${APK}&ts=${ts}&hash=${md5sum}`;
 
-  if (filterBy == domainConstants.FILTER_TYPES.BY_CHARACTER) {
+ if (filterBy == domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER) {
     subUrl = domainConstants.DATA_TYPE.CHARACTERS.URL;
     url = `http://gateway.marvel.com/v1/public/${subUrl}?apikey=${APK}&ts=${ts}&hash=${md5sum}&name=${term}`;
 
@@ -35,7 +35,7 @@ export function fetchData(subUrl, options = {}) {
 
       return axios.get(url);
     })
-  } else if (filterBy == domainConstants.FILTER_TYPES.BY_SERIES) {
+ } else if (filterBy == domainConstants.FILTER_TYPES.COMICS_BY_SERIES) {
     url = `http://gateway.marvel.com/v1/public/series?apikey=${APK}&ts=${ts}&hash=${md5sum}&titleStartsWith=${term}`;
 
     return axios.get(url).then((response) => {

@@ -34,8 +34,8 @@ class Comics extends React.Component {
         <div className="col-xs-2">
           <select className="input-group" onChange={this.onFilterChange.bind(this)} >
             <option value={domainConstants.FILTER_TYPES.ALL}>Show All</option>
-            <option value={domainConstants.FILTER_TYPES.BY_CHARACTER}>Filter by Character</option>
-            <option value={domainConstants.FILTER_TYPES.BY_SERIES}>Filter by Series</option>
+            <option value={domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER}>Filter by Character</option>
+            <option value={domainConstants.FILTER_TYPES.COMICS_BY_SERIES}>Filter by Series</option>
           </select>
         </div>
         <div className="col-xs-10 pull-xs-right">
