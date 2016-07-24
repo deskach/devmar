@@ -60,8 +60,11 @@ class ComicsList extends Component {
     return <div>Loading...</div>
   }
 
-  static mapStateToProps({content}) {
-    return {comics: content.comics};
+  static mapStateToProps(state) {
+    return {
+      comics: state.content.comics,
+      queryParams: state.queryParams
+    };
   }
 
   static mapDispatchToProps(dispatch) {

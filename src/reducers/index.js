@@ -1,6 +1,16 @@
 import {combineReducers} from "redux";
 import actionConstants from "../actions/constants";
 
+const rootReducer = combineReducers({
+  content: ContentReducer,
+  filterBy: SimplePayloadReducer(actionConstants.FILTER_BY),
+  characterDetails: SimplePayloadReducer(actionConstants.FETCH_CHAR_BY_NAME),
+  comicDetails: SimplePayloadReducer(actionConstants.FETCH_COMIC_BY_ID),
+  queryParams: SimplePayloadReducer(actionConstants.SET_QUERY_PARAMS)
+});
+
+export default rootReducer;
+
 function ContentReducer(state = {comics: {data: {results: []}}, characters: {data: {results: []}}}, action) {
   switch (action.type) {
     case actionConstants.CONTENT_TYPE.CHARACTERS:
@@ -25,12 +35,3 @@ function SimplePayloadReducer(action_name) {
     return state;
   }
 }
-
-const rootReducer = combineReducers({
-  content: ContentReducer,
-  filterBy: SimplePayloadReducer(actionConstants.FILTER_BY),
-  characterDetails: SimplePayloadReducer(actionConstants.FETCH_CHAR_BY_NAME),
-  comicDetails: SimplePayloadReducer(actionConstants.FETCH_COMIC_BY_ID)
-});
-
-export default rootReducer;
