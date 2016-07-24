@@ -23,15 +23,11 @@ class SearchBar extends React.Component {
     event.preventDefault();
     switch (this.props.filterBy) {
       case domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER:
-        console.log('Do filtering by character');
         this.props.doFilterComicsByCharacter(this.state.term, this.props.location.query);
         break;
       case domainConstants.FILTER_TYPES.COMICS_BY_SERIES:
-        console.log('Do filtering by series');
         this.props.doFilterComicsBySeries(this.state.term, this.props.location.query);
         break;
-      default:
-        console.log('No Filtering criteria');
     }
 
     this.setState({term: ''});

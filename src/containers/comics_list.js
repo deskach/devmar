@@ -41,8 +41,6 @@ class ComicsList extends Component {
     const comics = this.props.comics;
 
     if (comics) {
-      console.log(`rendering comics in accordance with ${JSON.stringify(this.props.queryParams)}`);
-
       return (
         <table className="table table-hover table-1st-col-25">
           <thead>

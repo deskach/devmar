@@ -41,8 +41,6 @@ class CharacterList extends Component {
     const characters = this.props.characters;
 
     if (characters) {
-      console.log(`rendering characters in accordance with ${JSON.stringify(this.props.queryParams)}`);
-
       return (
         <table className="table table-hover table-1st-col-25">
           <thead>

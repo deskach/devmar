@@ -5,7 +5,6 @@ import {fetchComicsByCharacter} from "../domain/services/fetchComicsByCharacter"
 import {fetchComicsBySeries} from "../domain/services/fetchComicsBySeries";
 
 export function doFetchCharacterById(id) {
-  console.log(`doFetchCharacterById(${id})`);
   const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}/${id}`);
 
   return {
@@ -15,7 +14,6 @@ export function doFetchCharacterById(id) {
 }
 
 export function doFetchComicById(id) {
-  console.log(`doFetchComicById(${id})`);
   const request = fetchData(`${domainConstants.DATA_TYPE.COMICS.URL}/${id}`);
 
   return {
@@ -28,8 +26,6 @@ export function doFetchComicById(id) {
 export function doFetchContent(contentType, term, filterBy, queryParams) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
-
-  console.log(`doFetchContent(${contentType})`);
 
   var contentType2Url = {};
   contentType2Url[CT.COMICS] = DT.COMICS.URL;
@@ -44,8 +40,6 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
 }
 
 export function doFilterComicsByCharacter(term, queryParams) {
-  console.log(`doFilterComicsByCharacter(${term}, ${JSON.stringify(queryParams)})`);
-
   const request = fetchComicsByCharacter(term, queryParams);
 
   return {
@@ -55,8 +49,6 @@ export function doFilterComicsByCharacter(term, queryParams) {
 }
 
 export function doFilterComicsBySeries(term, queryParams) {
-  console.log(`doFilterComicsBySeries(${term}, ${JSON.stringify(queryParams)})`);
-
   const request = fetchComicsBySeries(term, queryParams);
 
   return {
@@ -66,8 +58,6 @@ export function doFilterComicsBySeries(term, queryParams) {
 }
 
 export function doFilterBy(filterBy) {
-  console.log(`doFilterBy(${filterBy})`);
-
   return {
     type: actionConstants.FILTER_BY,
     payload: filterBy
@@ -75,8 +65,6 @@ export function doFilterBy(filterBy) {
 }
 
 export function doSaveLocation(params) {
-  console.log(`doSaveLocation(${params})`);
-
   return {
     type: actionConstants.SAVE_LOCATION,
     payload: params

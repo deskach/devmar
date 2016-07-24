@@ -5,7 +5,6 @@ import {getSignedUrl4Collection} from "../utils";
 //TODO: Current fetchComicsByCharacter implementation does not support paging, this should be fixed
 
 export function fetchComicsByCharacter(term, options = {}) {
-  console.log(`fetchComicsByCharacter options=${JSON.stringify(options)}`);
   if (!term) {
     return null;
   }
