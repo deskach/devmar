@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, IndexRoute} from "react-router";
-import App from "./components/app";
+import App from "./containers/app";
 import Comics from "./components/comics";
 import Characters from "./components/characters";
 import CharacterDetail from "./containers/character_detail";
