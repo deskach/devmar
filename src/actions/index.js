@@ -25,11 +25,11 @@ export function doFetchComicById(id) {
 }
 
 //TODO: refactor 3 last arguments into a dict
-export function doFetchContent(contentType, term, filterBy, queryParams) {
+export function doFetchContent(contentType, queryParams) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
 
-  console.log(`doFetchContent(${contentType}), ${term}, ${queryParams}`);
+  console.log(`doFetchContent(${contentType}), ${queryParams}`);
 
   var contentType2Url = {};
   contentType2Url[CT.COMICS] = DT.COMICS.URL;
@@ -51,7 +51,7 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
     return doFilterComicsBySeries(seriesTitleStartsWith, updatedQueryParams)
   }
 
-  const request = fetchData(contentType2Url[contentType], {term, filterBy, queryParams});
+  const request = fetchData(contentType2Url[contentType], queryParams);
 
   return {
     type: contentType,
