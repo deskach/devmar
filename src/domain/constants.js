@@ -1,11 +1,11 @@
 export default {
   DATA_TYPE: {
     COMICS: {
-      TYPE_NAME: 'COMICS',
+      TYPE_NAME: 'comics',
       URL: 'comics'
     },
     CHARACTERS: {
-      TYPE_NAME: 'CHARACTERS',
+      TYPE_NAME: 'characters',
       URL: 'characters'
     }
   },

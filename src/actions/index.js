@@ -1,12 +1,10 @@
 import {fetchData} from "../domain/services/fetchData";
 import actionConstants from "./constants";
 import domainConstants from "../domain/constants";
-import fetchCharacterByName from "../domain/services/fetchCharacter";
-import fetchComicById from "../domain/services/fetch_comics";
 
 export function doFetchCharacterByName(name) {
   console.log(`doFetchCharacterByName(${name})`);
-  const request = fetchCharacterByName(name);
+  const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}`);
 
   return {
     type: actionConstants.FETCH_CHAR_BY_NAME,
@@ -16,7 +14,7 @@ export function doFetchCharacterByName(name) {
 
 export function doFetchComicById(id) {
   console.log(`doFetchComicById(${id})`);
-  const request = fetchComicById(id);
+  const request = fetchData(`${domainConstants.DATA_TYPE.COMICS.URL}/${id}`);
 
   return {
     type: actionConstants.FETCH_COMIC_BY_ID,
@@ -31,11 +29,11 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
 
   console.log(`doFetchContent(${contentType})`);
 
-  var contentType2dataType = { };
-  contentType2dataType[CT.COMICS] =  DT.COMICS.TYPE_NAME;
-  contentType2dataType[CT.CHARACTERS] = DT.CHARACTERS.TYPE_NAME;
+  var contentType2Url = {};
+  contentType2Url[CT.COMICS] = DT.COMICS.URL;
+  contentType2Url[CT.CHARACTERS] = DT.CHARACTERS.URL;
 
-  const request = fetchData(contentType2dataType[contentType], {term, filterBy, queryParams});
+  const request = fetchData(contentType2Url[contentType], {term, filterBy, queryParams});
 
   return {
     type: contentType,

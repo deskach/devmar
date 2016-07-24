@@ -1,8 +1,15 @@
 import axios from "axios";
-import md5 from "../vendor/md5baseJS";
-import domainConstants from "../constants";
+import {getSignedUrl4Collection} from "../utils";
 
-export function fetchData(dataType, options) {
+export function fetchData(subUrl, options = {}) {
+  console.log(`Fetching ${subUrl} with options=${JSON.stringify(options)}`);
+
+  var url = getSignedUrl4Collection(subUrl, options.queryParams);
+
+  return axios.get(url);
+}
+/*
+ function fetchDataOld(dataType, options) {
   console.log(`Fetching ${dataType} with options=${JSON.stringify(options)}`);
 
   const ASK = domainConstants.API_SECRET_KEY;
@@ -46,3 +53,4 @@ export function fetchData(dataType, options) {
     return axios.get(url);
   }
 }
+ */
