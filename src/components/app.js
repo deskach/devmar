@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
-import Pagination from "./pagination";
+import Pagination from "../containers/pagination";
 
 export default class App extends Component {
   render() {
