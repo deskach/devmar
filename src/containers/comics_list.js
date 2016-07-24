@@ -16,7 +16,7 @@ class ComicsList extends Component {
   }
 
   componentWillMount() {
-    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '');
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '', null, this.props.queryParams);
   }
 
   renderComics(comicsData) {

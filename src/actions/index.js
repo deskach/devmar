@@ -24,7 +24,8 @@ export function doFetchComicById(id) {
   }
 }
 
-export function doFetchContent(contentType, term, filterBy) {
+//TODO: refactor 3 last arguments into a dict
+export function doFetchContent(contentType, term, filterBy, queryParams) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
 
@@ -34,7 +35,7 @@ export function doFetchContent(contentType, term, filterBy) {
   contentType2dataType[CT.COMICS] =  DT.COMICS.TYPE_NAME;
   contentType2dataType[CT.CHARACTERS] = DT.CHARACTERS.TYPE_NAME;
 
-  const request = fetchData(contentType2dataType[contentType], term, filterBy);
+  const request = fetchData(contentType2dataType[contentType], {term, filterBy, queryParams});
 
   return {
     type: contentType,
