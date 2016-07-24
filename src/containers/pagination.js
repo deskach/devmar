@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import {createSearchStringFromArgs} from "../domain/utils";
 
 const btnBackwardId = 'btnBackward';
 const btnForwardId = 'btnForward';
@@ -16,18 +17,26 @@ class Pagination extends React.Component {
   }
 
   handleClick(event) {
-    const query = this.props.location.query;
-    const offset = (query && query.hasOwnProperty('offset')) ? parseInt(query.offset) : 0;
-    const pathname = this.props.location.pathname;
+    if (event.target.id != btnBackwardId && event.target.id != btnForwardId) {
+      throw `incorrect button id ${event.target.id}`;
+    }
 
-    if (offset >= 20 && event.target.id === btnBackwardId) {
-      this.context.router.push(`${this.props.location.pathname}?offset=${offset - 20}`);
-    } else if (event.target.id === btnForwardId) {
-      this.context.router.push(`${this.props.location.pathname}?offset=${offset + 20}`);
+    var query = this.props.location.query;
+    var offset = (query && query.hasOwnProperty('offset')) ? parseInt(query.offset) : 0;
+    const limit = (query && query.hasOwnProperty('limit')) ? parseInt(query.limit) : 20;
+
+    if (event.target.id === btnBackwardId) {
+      if (offset >= limit) {
+        offset -= limit;
+      }
+    } else {
+      offset += limit;
     }
-    else {
-      this.context.router.push(this.props.location.pathname);
-    }
+    query.offset = offset;
+
+    const search = createSearchStringFromArgs(query);
+
+    this.context.router.push(`${this.props.location.pathname}?${search}`);
   }
 
   render() {
