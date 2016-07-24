@@ -4,17 +4,17 @@ import {getSignedUrl4Collection} from "../utils";
 
 //TODO: Current fetchComicsByCharacter implementation does not support paging, this should be fixed
 
-export function fetchComicsByCharacter(options = {}) {
+export function fetchComicsByCharacter(term, options = {}) {
   console.log(`fetchComicsByCharacter options=${JSON.stringify(options)}`);
-  if (!options.hasOwnProperty('term') || !options.term) {
+  if (!term) {
     return null;
   }
 
   const charactersSubUrl = domainConstants.DATA_TYPE.CHARACTERS.URL;
   const comicsSubUri = domainConstants.DATA_TYPE.COMICS.URL;
 
-  // Find character id using its name provided in options.term
-  var searchParams = {nameStartsWith: options.term};
+  // Find character id using its name provided in term
+  var searchParams = {nameStartsWith: term};
   var url = getSignedUrl4Collection(charactersSubUrl, searchParams);
 
   var request = axios.get(url).then((response) => {

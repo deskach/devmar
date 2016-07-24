@@ -46,7 +46,7 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
 export function doFilterComicsByCharacter(term, queryParams) {
   console.log(`doFilterComicsByCharacter(${term}, ${JSON.stringify(queryParams)})`);
 
-  const request = fetchComicsByCharacter({term, queryParams});
+  const request = fetchComicsByCharacter(term, queryParams);
 
   return {
     type: actionConstants.FILTER_COMICS_BY_CHARACTER,
@@ -57,7 +57,7 @@ export function doFilterComicsByCharacter(term, queryParams) {
 export function doFilterComicsBySeries(term, queryParams) {
   console.log(`doFilterComicsBySeries(${term}, ${JSON.stringify(queryParams)})`);
 
-  const request = fetchComicsBySeries({term, queryParams});
+  const request = fetchComicsBySeries(term, queryParams);
 
   return {
     type: actionConstants.FILTER_COMICS_BY_SERIES,
