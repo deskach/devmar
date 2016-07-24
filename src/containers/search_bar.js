@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {doFetchContent, doFilterComicsByCharacter} from "../actions/index";
+import {doFetchContent, doFilterComicsByCharacter, doFilterComicsBySeries} from "../actions/index";
 import domainConstants from "../domain/constants";
 
 class SearchBar extends React.Component {
@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
         break;
       case domainConstants.FILTER_TYPES.COMICS_BY_SERIES:
         console.log('Do filtering by series');
-        // this.props.doFilterComicsBySeries(this.state.term, this.props.location.query);
+        this.props.doFilterComicsBySeries(this.state.term, this.props.location.query);
         break;
       default:
         console.log('No Filtering criteria');
@@ -57,4 +57,7 @@ class SearchBar extends React.Component {
   }
 }
 
-export default connect(SearchBar.mapStateToProps, {doFetchContent, doFilterComicsByCharacter})(SearchBar);
+export default connect(SearchBar.mapStateToProps,
+  {doFetchContent, doFilterComicsByCharacter, doFilterComicsBySeries}
+)(SearchBar);
+

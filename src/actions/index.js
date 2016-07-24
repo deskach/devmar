@@ -2,6 +2,7 @@ import {fetchData} from "../domain/services/fetchData";
 import actionConstants from "./constants";
 import domainConstants from "../domain/constants";
 import {fetchComicsByCharacter} from "../domain/services/fetchComicsByCharacter";
+import {fetchComicsBySeries} from "../domain/services/fetchComicsBySeries";
 
 export function doFetchCharacterById(id) {
   console.log(`doFetchCharacterById(${id})`);
@@ -49,6 +50,17 @@ export function doFilterComicsByCharacter(term, queryParams) {
 
   return {
     type: actionConstants.FILTER_COMICS_BY_CHARACTER,
+    payload: request
+  };
+}
+
+export function doFilterComicsBySeries(term, queryParams) {
+  console.log(`doFilterComicsBySeries(${term}, ${JSON.stringify(queryParams)})`);
+
+  const request = fetchComicsBySeries({term, queryParams});
+
+  return {
+    type: actionConstants.FILTER_COMICS_BY_SERIES,
     payload: request
   };
 }

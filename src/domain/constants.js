@@ -7,6 +7,10 @@ export default {
     CHARACTERS: {
       TYPE_NAME: 'characters',
       URL: 'characters'
+    },
+    SERIES: {
+      TYPE_NAME: 'series',
+      URL: 'series'
     }
   },
 
