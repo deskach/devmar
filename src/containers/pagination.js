@@ -41,17 +41,19 @@ class Pagination extends React.Component {
 
   render() {
     return (
-      <div>
-        <button id={btnBackwardId}
-                className="btn btn-info pull-xs-left margin-bottom-1"
-                onClick={this.handleClick}
-        >Backward
-        </button>
-        <button id={btnForwardId}
-                className="btn btn-info pull-xs-right margin-bottom-1"
-                onClick={this.handleClick}
-        >Forward
-        </button>
+      <div className="container">
+        <div className="col-xs-offset-5 margin-bottom-1 ">
+          <button id={btnBackwardId}
+                  className="btn btn-group btn-info"
+                  onClick={this.handleClick}
+          >Backward
+          </button>
+          <button id={btnForwardId}
+                  className="btn btn-group btn-info margin-left-1"
+                  onClick={this.handleClick}
+          >Forward
+          </button>
+        </div>
       </div>
     )
   }
