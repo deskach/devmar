@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 import {doFetchContent} from "../actions/index";
 import actionConstants from "../actions/constants";
 
@@ -39,9 +38,11 @@ class ComicsList extends Component {
   }
 
   render() {
-    var comics = this.props.comics;
+    const comics = this.props.comics;
 
     if (comics) {
+      console.log(`rendering comics in accordance with ${JSON.stringify(this.props.queryParams)}`);
+
       return (
         <table className="table table-hover table-sm table-1st-col-25">
           <thead>
@@ -63,13 +64,9 @@ class ComicsList extends Component {
   static mapStateToProps(state) {
     return {
       comics: state.content.comics,
-      queryParams: state.queryParams
+      queryParams: state.location.query
     };
-  }
-
-  static mapDispatchToProps(dispatch) {
-    return bindActionCreators({doFetchContent}, dispatch);
   }
 }
 
-export default connect(ComicsList.mapStateToProps, ComicsList.mapDispatchToProps)(ComicsList);
+export default connect(ComicsList.mapStateToProps, {doFetchContent})(ComicsList);

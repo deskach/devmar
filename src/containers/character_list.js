@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 import {doFetchContent} from "../actions/index";
 import actionConstants from "../actions/constants";
 
@@ -39,31 +38,35 @@ class CharacterList extends Component {
   }
 
   render() {
-    return (
-      <table className="table table-hover table-sm table-1st-col-25">
-        <thead>
-        <tr className="text-xs-large">
-          <th>Character</th>
-          <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        {this.props.characters ? this.props.characters.data.results.map(this.renderCharacters) : ""}
-        </tbody>
-      </table>
-    );
+    const characters = this.props.characters;
+
+    if (characters) {
+      console.log(`rendering characters in accordance with ${JSON.stringify(this.props.queryParams)}`);
+
+      return (
+        <table className="table table-hover table-sm table-1st-col-25">
+          <thead>
+          <tr className="text-xs-large">
+            <th>Character</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          {this.props.characters ? this.props.characters.data.results.map(this.renderCharacters) : ""}
+          </tbody>
+        </table>
+      );
+    }
+
+    return <div>Loading...</div>
   }
 
   static mapStateToProps(state) {
     return {
       characters: state.content.characters,
-      queryParams: state.queryParams
+      queryParams: state.location.query
     };
-  }
-
-  static mapDispatchToProps(dispatch) {
-    return bindActionCreators({doFetchContent}, dispatch);
   }
 }
 
-export default connect(CharacterList.mapStateToProps, CharacterList.mapDispatchToProps)(CharacterList);
+export default connect(CharacterList.mapStateToProps, {doFetchContent})(CharacterList);

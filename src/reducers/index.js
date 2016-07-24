@@ -6,7 +6,7 @@ const rootReducer = combineReducers({
   filterBy: SimplePayloadReducer(actionConstants.FILTER_BY),
   characterDetails: SimplePayloadReducer(actionConstants.FETCH_CHAR_BY_ID),
   comicDetails: SimplePayloadReducer(actionConstants.FETCH_COMIC_BY_ID),
-  queryParams: SimplePayloadReducer(actionConstants.SET_QUERY_PARAMS)
+  location: SimplePayloadReducer(actionConstants.SAVE_LOCATION)
 });
 
 export default rootReducer;

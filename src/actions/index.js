@@ -50,11 +50,11 @@ export function doFilterBy(filterBy) {
   }
 }
 
-export function doSetQueryParams(params) {
-  console.log(`doSetQueryParams(${params})`);
+export function doSaveLocation(params) {
+  console.log(`doSaveLocation(${params})`);
 
   return {
-    type: actionConstants.SET_QUERY_PARAMS,
+    type: actionConstants.SAVE_LOCATION,
     payload: params
   }
 }

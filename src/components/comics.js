@@ -4,7 +4,7 @@ import SearchBar from "../containers/search_bar";
 import ComicsList from "../containers/comics_list";
 import actionConstants from "../actions/constants";
 import domainConstants from "../domain/constants";
-import {doFilterBy, doSetQueryParams} from "../actions/index";
+import {doFilterBy, doSaveLocation, doFetchContent} from "../actions/index";
 
 class Comics extends React.Component {
   constructor(props) {
@@ -16,7 +16,12 @@ class Comics extends React.Component {
   }
 
   componentWillMount() {
-    this.props.doSetQueryParams(this.props.location.query);
+    this.props.doSaveLocation(this.props.location);
+  }
+
+  componentDidUpdate() {
+    this.props.doSaveLocation(this.props.location);
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '', null, this.props.location.query);
   }
 
   onFilterChange(event) {
@@ -42,4 +47,4 @@ class Comics extends React.Component {
   }
 }
 
-export default connect(null, {doFilterBy, doSetQueryParams})(Comics);
+export default connect(null, {doFilterBy, doSaveLocation, doFetchContent})(Comics);

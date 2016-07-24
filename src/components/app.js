@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
+import Pagination from "./pagination";
 
 export default class App extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class App extends Component {
           <Link to="/characters" className="btn btn-primary filtering-button">Characters</Link>
         </div>
         {this.props.children}
+        <Pagination/>
       </div>
     );
   }
