@@ -5,6 +5,8 @@ import ComicsList from "../containers/comics_list";
 import actionConstants from "../actions/constants";
 import domainConstants from "../domain/constants";
 import {doFilterBy, doSaveLocation, doFetchContent} from "../actions/index";
+import Pagination from "../containers/pagination";
+
 
 class Comics extends React.Component {
   constructor(props) {
@@ -42,6 +44,7 @@ class Comics extends React.Component {
           <SearchBar contentType={ actionConstants.CONTENT_TYPE.COMICS } filterBy = { this.state.filterBy } />
         </div>
         <ComicsList />
+        <Pagination />
       </div>
     );
   }
