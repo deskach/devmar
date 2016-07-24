@@ -29,7 +29,7 @@ class CharacterDetail extends React.Component {
 
       return (
         <div>
-          <img className="avatar-detailed img-thumbnail pull-xs-right" src={imgSrc}/>
+          <img className="avatar-detailed img-responsive pull-right" src={imgSrc}/>
           <div>
             <p className="text-xs-large"><strong>Name:</strong>&nbsp;{name}</p>
             <p>

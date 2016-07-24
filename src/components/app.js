@@ -1,28 +1,31 @@
 import React, {Component} from "react";
 import {Link} from "react-router";
+import {connect} from "react-redux";
 
 export default class App extends Component {
   render() {
+    const pathname = this.props.location ? this.props.location.pathname : "";
+
     return (
       <div>
         <div className="container">
-          <ul className="nav navbar-nav">
-            <li><Link to="/comics" className="active">Comics</Link></li>
-            <li><Link to="/characters">Characters</Link></li>
-          </ul>
+          <nav className="navbar navbar-default">
+            <ul className="nav navbar-nav">
+              <li className={pathname == "/comics" ? "active" : ""}><Link to="/comics">Comics</Link></li>
+              <li className={pathname == "/characters" ? "active" : ""}><Link to="/characters">Characters</Link></li>
+            </ul>
+          </nav>
         </div>
         <div className="container">
           {this.props.children}
         </div>
       </div>
-
-      // <div>
-      //     <div className="margin-bottom-1">
-      //       <Link to="/comics" className="btn btn-primary filtering-button">Comics</Link>
-      //       <Link to="/characters" className="btn btn-primary filtering-button">Characters</Link>
-      //     </div>
-      //     {this.props.children}
-      //   </div>
     );
   }
+
+  static mapStateToProps({location}) {
+    return {location};
+  }
 }
+
+export default connect(App.mapStateToProps)(App);

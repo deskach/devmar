@@ -44,7 +44,7 @@ class ComicsList extends Component {
       console.log(`rendering comics in accordance with ${JSON.stringify(this.props.queryParams)}`);
 
       return (
-        <table className="table table-hover table-sm table-1st-col-25">
+        <table className="table table-hover table-1st-col-25">
           <thead>
           <tr className="text-xs-large">
             <th>Comic</th>

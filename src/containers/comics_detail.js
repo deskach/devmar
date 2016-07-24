@@ -21,7 +21,7 @@ class ComicsDetail extends React.Component {
 
       return (
         <div>
-          <img className="avatar-detailed img-thumbnail pull-xs-right" src={imgSrc}/>
+          <img className="avatar-detailed img-responsive pull-right" src={imgSrc}/>
           <div>
             <p className="text-xs-large"><strong>Title:</strong>&nbsp;{title}</p>
             <p className="text-xs-large"><strong>ISBN:</strong>&nbsp;{isbn ? isbn : notAvailable}</p>

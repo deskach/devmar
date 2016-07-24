@@ -36,7 +36,7 @@ class Comics extends React.Component {
         <div className="row">
           <div className="col-xs-2">
             <select className="input-group form-control" onChange={this.onFilterChange.bind(this)}>
-              <option value={domainConstants.FILTER_TYPES.ALL}>Show All</option>
+              <option value={domainConstants.FILTER_TYPES.ALL}>No Filtering</option>
               <option value={domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER}>Filter by Character</option>
               <option value={domainConstants.FILTER_TYPES.COMICS_BY_SERIES}>Filter by Series</option>
             </select>

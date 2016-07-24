@@ -44,7 +44,7 @@ class CharacterList extends Component {
       console.log(`rendering characters in accordance with ${JSON.stringify(this.props.queryParams)}`);
 
       return (
-        <table className="table table-hover table-sm table-1st-col-25">
+        <table className="table table-hover table-1st-col-25">
           <thead>
           <tr className="text-xs-large">
             <th>Character</th>
