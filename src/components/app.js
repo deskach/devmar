@@ -9,12 +9,14 @@ export default class App extends Component {
     return (
       <div>
         <div className="container">
-          <nav className="navbar navbar-default">
-            <ul className="nav navbar-nav">
-              <li className={pathname == "/comics" ? "active" : ""}><Link to="/comics">Comics</Link></li>
-              <li className={pathname == "/characters" ? "active" : ""}><Link to="/characters">Characters</Link></li>
-            </ul>
-          </nav>
+          <div className="navbar navbar-default">
+            <nav className="container-fluid">
+              <ul className="nav navbar-nav">
+                <li className={pathname == "/comics" ? "active" : ""}><Link to="/comics">Comics</Link></li>
+                <li className={pathname == "/characters" ? "active" : ""}><Link to="/characters">Characters</Link></li>
+              </ul>
+            </nav>
+          </div>
         </div>
         <div className="container">
           {this.props.children}
