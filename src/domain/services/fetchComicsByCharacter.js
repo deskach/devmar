@@ -22,7 +22,7 @@ export function fetchComicsByCharacter(term, options = {}) {
       const id = response.data.data.results[0].id;
       const collection = `${charactersSubUrl}/${id}/${comicsSubUri}`;
 
-      var url1 = getSignedUrl4Collection(collection);
+      var url1 = getSignedUrl4Collection(collection, options);
 
       return axios.get(url1);
     }
