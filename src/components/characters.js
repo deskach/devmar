@@ -1,10 +1,15 @@
-import React from 'react';
-
+import React from "react";
+import {connect} from "react-redux";
+import CharacterList from "../containers/character_list";
+import {doSetQueryParams} from "../actions/index";
 // import SearchBar from '../containers/search_bar';
-import CharacterList from '../containers/character_list';
 // import actionConstants from '../actions/constants';
 
-export default class Characters extends React.Component {
+class Characters extends React.Component {
+  componentWillMount() {
+    this.props.doSetQueryParams(this.props.location.query);
+  }
+
   render() {
     return (
       <div>
@@ -14,3 +19,5 @@ export default class Characters extends React.Component {
     );
   }
 }
+
+export default connect(null, {doSetQueryParams})(Characters);

@@ -16,7 +16,7 @@ class CharacterList extends Component {
   }
 
   componentWillMount() {
-    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, '');
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, '', null, this.props.queryParams);
   }
 
   renderCharacters(characterData) {
@@ -26,7 +26,7 @@ class CharacterList extends Component {
     const url = `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`;
 
     return (
-      <tr key={id} id={id} className="clickable" onClick={() => this.context.router.push(`characters/${name}`)}>
+      <tr key={id} id={id} className="clickable" onClick={() => this.context.router.push(`characters/${id}`)}>
         <td>
           <img className="img-thumbnail avatar" src={url}/>
         </td>
@@ -54,8 +54,11 @@ class CharacterList extends Component {
     );
   }
 
-  static mapStateToProps({content}) {
-    return {characters: content.characters};
+  static mapStateToProps(state) {
+    return {
+      characters: state.content.characters,
+      queryParams: state.queryParams
+    };
   }
 
   static mapDispatchToProps(dispatch) {

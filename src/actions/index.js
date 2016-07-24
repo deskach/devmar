@@ -4,7 +4,7 @@ import domainConstants from "../domain/constants";
 
 export function doFetchCharacterByName(name) {
   console.log(`doFetchCharacterByName(${name})`);
-  const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}`);
+  const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}/${name}`);
 
   return {
     type: actionConstants.FETCH_CHAR_BY_NAME,
