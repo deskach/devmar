@@ -34,16 +34,14 @@ class Comics extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col-xs-2">
+          <div className="col-xs-3">
             <select className="input-group form-control" onChange={this.onFilterChange.bind(this)}>
               <option value={domainConstants.FILTER_TYPES.ALL}>No Filtering</option>
               <option value={domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER}>Filter by Character</option>
               <option value={domainConstants.FILTER_TYPES.COMICS_BY_SERIES}>Filter by Series</option>
             </select>
           </div>
-          <div className="col-xs-10">
-            <SearchBar contentType={ actionConstants.CONTENT_TYPE.COMICS } filterBy={ this.state.filterBy }/>
-          </div>
+          <SearchBar contentType={ actionConstants.CONTENT_TYPE.COMICS } filterBy={ this.state.filterBy }/>
         </div>
         <ComicsList />
         <Pagination />

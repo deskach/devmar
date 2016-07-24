@@ -39,18 +39,16 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="col-xs-9">
         <form onSubmit={this.onFormSubmit} className="input-group col-xs-12">
-          <div className="col-xs-9">
+          <div className="col-xs-10">
             <input
               className="form-control"
               value={this.state.term}
               onChange={this.onInputChange}
               placeholder="Input search string"/>
           </div>
-          <span className="input-group-btn col-xs-2">
-            <button type="submit" className="btn btn-primary">Submit</button>
-          </span>
+          <button type="submit" className="btn btn-primary col-xs-2">Submit</button>
         </form>
       </div>
     );
