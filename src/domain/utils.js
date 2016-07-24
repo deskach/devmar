@@ -30,5 +30,5 @@ export function getSignedUrl4Collection(collection, args = {}) {
     url += '&' + search;
   }
 
-  return url;
+  return encodeURI(url);
 }

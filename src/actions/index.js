@@ -1,6 +1,7 @@
 import {fetchData} from "../domain/services/fetchData";
 import actionConstants from "./constants";
 import domainConstants from "../domain/constants";
+import {fetchComicsByCharacter} from "../domain/services/fetchComicsByCharacter";
 
 export function doFetchCharacterById(id) {
   console.log(`doFetchCharacterById(${id})`);
@@ -44,8 +45,7 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
 export function doFilterComicsByCharacter(term, queryParams) {
   console.log(`doFilterComicsByCharacter(${term}, ${JSON.stringify(queryParams)})`);
 
-  var request = 'testing doFilterComicsByCharacter';
-  // const request = fetchComicsByCharacter({term, queryParams});
+  const request = fetchComicsByCharacter({term, queryParams});
 
   return {
     type: actionConstants.FILTER_COMICS_BY_CHARACTER,
