@@ -50,3 +50,12 @@ export function doFilterBy(filterBy) {
     payload: filterBy
   }
 }
+
+export function doSetQueryParams(params) {
+  console.log(`doSetQueryParams(${params})`);
+
+  return {
+    type: actionConstants.SET_QUERY_PARAMS,
+    payload: params
+  }
+}

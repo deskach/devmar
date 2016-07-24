@@ -1,11 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
 import SearchBar from "../containers/search_bar";
 import ComicsList from "../containers/comics_list";
 import actionConstants from "../actions/constants";
 import domainConstants from "../domain/constants";
-import {doFilterBy} from "../actions/index";
+import {doFilterBy, doSetQueryParams} from "../actions/index";
 
 class Comics extends React.Component {
   constructor(props) {
@@ -14,6 +13,10 @@ class Comics extends React.Component {
     this.state = {
       filterBy: domainConstants.FILTER_TYPES.ALL
     };
+  }
+
+  componentWillMount() {
+    this.props.doSetQueryParams(this.props.location.query);
   }
 
   onFilterChange(event) {
@@ -37,10 +40,6 @@ class Comics extends React.Component {
       </div>
     );
   }
-
-  static mapDispatchToProps(dispatch) {
-    return bindActionCreators({doFilterBy}, dispatch);
-  }
 }
 
-export default connect(null, Comics.mapDispatchToProps)(Comics);
+export default connect(null, {doFilterBy, doSetQueryParams})(Comics);
