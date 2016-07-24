@@ -35,16 +35,20 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
   contentType2Url[CT.COMICS] = DT.COMICS.URL;
   contentType2Url[CT.CHARACTERS] = DT.CHARACTERS.URL;
 
-  var charNameStartsWith = queryParams[
+  const charNameStartsWith = queryParams[
     domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
+  const seriesTitleStartsWith = queryParams[
+    domainConstants.URL_SEARCH_COMICS_BY_SERIES];
+  var updatedQueryParams = {...queryParams};
 
   if (charNameStartsWith) {
-    var updatedQueryParams = {...queryParams};
-    term = queryParams[domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
-
     delete updatedQueryParams[domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
 
-    return doFilterComicsByCharacter(term, updatedQueryParams)
+    return doFilterComicsByCharacter(charNameStartsWith, updatedQueryParams)
+  } else if (seriesTitleStartsWith) {
+    delete updatedQueryParams[domainConstants.URL_SEARCH_COMICS_BY_SERIES];
+
+    return doFilterComicsBySeries(seriesTitleStartsWith, updatedQueryParams)
   }
 
   const request = fetchData(contentType2Url[contentType], {term, filterBy, queryParams});

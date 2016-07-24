@@ -29,26 +29,26 @@ class SearchBar extends React.Component {
 
   onFormSubmit(event) {
     event.preventDefault();
+    var search = this.props.location.search;
 
     switch (this.props.filterBy) {
       case domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER:
         console.log('Do filtering by character');
-        const search = this.props.location.search + '&'
-          + domainConstants.URL_SEARCH_COMICS_BY_CHARACTER + '='
-          + this.state.term;
+        search = [search, domainConstants.URL_SEARCH_COMICS_BY_CHARACTER + '='
+        + this.state.term].join('&');
         this.context.router.push(`${this.props.location.pathname}?${search}`);
 
         break;
       case domainConstants.FILTER_TYPES.COMICS_BY_SERIES:
         console.log('Do filtering by series');
-        this.props.doFilterComicsBySeries(this.state.term,
-          this.props.location.query);
+        search = [search, domainConstants.URL_SEARCH_COMICS_BY_SERIES + '='
+        + this.state.term].join('&');
+        console.log(`${this.props.location.pathname}?${search}`);
+        this.context.router.push(`${this.props.location.pathname}?${search}`);
         break;
       default:
         console.log('No Filtering criteria');
     }
-
-    this.setState({term: ''});
   }
 
   render() {
