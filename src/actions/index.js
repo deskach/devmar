@@ -41,13 +41,25 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
   };
 }
 
+export function doFilterComicsByCharacter(term, queryParams) {
+  console.log(`doFilterComicsByCharacter(${term}, ${JSON.stringify(queryParams)})`);
+
+  var request = 'testing doFilterComicsByCharacter';
+  // const request = fetchComicsByCharacter({term, queryParams});
+
+  return {
+    type: actionConstants.FILTER_COMICS_BY_CHARACTER,
+    payload: request
+  };
+}
+
 export function doFilterBy(filterBy) {
   console.log(`doFilterBy(${filterBy})`);
 
   return {
     type: actionConstants.FILTER_BY,
     payload: filterBy
-  }
+  };
 }
 
 export function doSaveLocation(params) {
@@ -56,5 +68,5 @@ export function doSaveLocation(params) {
   return {
     type: actionConstants.SAVE_LOCATION,
     payload: params
-  }
+  };
 }

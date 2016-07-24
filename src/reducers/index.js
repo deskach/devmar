@@ -16,8 +16,11 @@ function ContentReducer(state = {comics: {data: {results: []}}, characters: {dat
     case actionConstants.CONTENT_TYPE.CHARACTERS:
       console.log(`ContentReducer reduced CHARACTERS`);
       return {...state, characters: action.payload.data};
+
     case actionConstants.CONTENT_TYPE.COMICS:
-      console.log(`ContentReducer reduced COMICS`);
+    case actionConstants.FILTER_COMICS_BY_CHARACTER:
+    case actionConstants.FILTER_COMICS_BY_SERIES:
+      console.log(`ContentReducer processed ${action.type}`);
       return {...state, comics: action.payload.data};
   }
 
