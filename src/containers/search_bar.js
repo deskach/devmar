@@ -31,7 +31,11 @@ class SearchBar extends React.Component {
   onFormSubmit(event) {
     event.preventDefault();
 
-    var newQuery = {};
+    var newQuery = {...this.props.location.query};
+
+    delete newQuery[domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
+    delete newQuery[domainConstants.URL_SEARCH_COMICS_BY_SERIES];
+    delete newQuery["offset"];
 
     switch (this.props.filterBy) {
       case domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER:
