@@ -5,6 +5,7 @@ import {fetchComicsByCharacter} from "../domain/services/fetchComicsByCharacter"
 import {fetchComicsBySeries} from "../domain/services/fetchComicsBySeries";
 
 export function doFetchCharacterById(id) {
+  console.log(`doFetchCharacterById(${id})`);
   const request = fetchData(`${domainConstants.DATA_TYPE.CHARACTERS.URL}/${id}`);
 
   return {
@@ -14,6 +15,7 @@ export function doFetchCharacterById(id) {
 }
 
 export function doFetchComicById(id) {
+  console.log(`doFetchComicById(${id})`);
   const request = fetchData(`${domainConstants.DATA_TYPE.COMICS.URL}/${id}`);
 
   return {
@@ -23,15 +25,33 @@ export function doFetchComicById(id) {
 }
 
 //TODO: refactor 3 last arguments into a dict
-export function doFetchContent(contentType, term, filterBy, queryParams) {
+export function doFetchContent(contentType, queryParams) {
   const CT = actionConstants.CONTENT_TYPE;
   const DT = domainConstants.DATA_TYPE;
+
+  console.log(`doFetchContent(${contentType}), ${queryParams}`);
 
   var contentType2Url = {};
   contentType2Url[CT.COMICS] = DT.COMICS.URL;
   contentType2Url[CT.CHARACTERS] = DT.CHARACTERS.URL;
 
-  const request = fetchData(contentType2Url[contentType], {term, filterBy, queryParams});
+  const charNameStartsWith = queryParams[
+    domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
+  const seriesTitleStartsWith = queryParams[
+    domainConstants.URL_SEARCH_COMICS_BY_SERIES];
+  var updatedQueryParams = {...queryParams};
+
+  if (charNameStartsWith) {
+    delete updatedQueryParams[domainConstants.URL_SEARCH_COMICS_BY_CHARACTER];
+
+    return doFilterComicsByCharacter(charNameStartsWith, updatedQueryParams)
+  } else if (seriesTitleStartsWith) {
+    delete updatedQueryParams[domainConstants.URL_SEARCH_COMICS_BY_SERIES];
+
+    return doFilterComicsBySeries(seriesTitleStartsWith, updatedQueryParams)
+  }
+
+  const request = fetchData(contentType2Url[contentType], queryParams);
 
   return {
     type: contentType,
@@ -40,6 +60,8 @@ export function doFetchContent(contentType, term, filterBy, queryParams) {
 }
 
 export function doFilterComicsByCharacter(term, queryParams) {
+  console.log(`doFilterComicsByCharacter(${term}, ${JSON.stringify(queryParams)})`);
+
   const request = fetchComicsByCharacter(term, queryParams);
 
   return {
@@ -49,6 +71,8 @@ export function doFilterComicsByCharacter(term, queryParams) {
 }
 
 export function doFilterComicsBySeries(term, queryParams) {
+  console.log(`doFilterComicsBySeries(${term}, ${JSON.stringify(queryParams)})`);
+
   const request = fetchComicsBySeries(term, queryParams);
 
   return {
@@ -58,6 +82,8 @@ export function doFilterComicsBySeries(term, queryParams) {
 }
 
 export function doFilterBy(filterBy) {
+  console.log(`doFilterBy(${filterBy})`);
+
   return {
     type: actionConstants.FILTER_BY,
     payload: filterBy
@@ -65,6 +91,8 @@ export function doFilterBy(filterBy) {
 }
 
 export function doSaveLocation(params) {
+  console.log(`doSaveLocation(${params})`);
+
   return {
     type: actionConstants.SAVE_LOCATION,
     payload: params

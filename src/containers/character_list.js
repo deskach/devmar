@@ -15,7 +15,7 @@ class CharacterList extends Component {
   }
 
   componentWillMount() {
-    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, '', null, this.props.queryParams);
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, this.props.queryParams);
   }
 
   renderCharacters(characterData) {

@@ -15,7 +15,7 @@ class Characters extends React.Component {
 
   componentDidUpdate() {
     this.props.doSaveLocation(this.props.location);
-    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, '', null, this.props.location.query);
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.CHARACTERS, this.props.location.query);
   }
 
   render() {

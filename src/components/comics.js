@@ -23,7 +23,7 @@ class Comics extends React.Component {
 
   componentDidUpdate() {
     this.props.doSaveLocation(this.props.location);
-    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, '', null, this.props.location.query);
+    this.props.doFetchContent(actionConstants.CONTENT_TYPE.COMICS, this.props.location.query);
   }
 
   onFilterChange(event) {
