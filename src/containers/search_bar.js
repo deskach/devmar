@@ -6,6 +6,7 @@ import {
   doFilterComicsBySeries
 } from "../actions/index";
 import domainConstants from "../domain/constants";
+import {createSearchStringFromArgs} from "../domain/utils";
 
 class SearchBar extends React.Component {
   static contextTypes = {
@@ -29,26 +30,25 @@ class SearchBar extends React.Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    var search = this.props.location.search;
+
+    var newQuery = {};
 
     switch (this.props.filterBy) {
       case domainConstants.FILTER_TYPES.COMICS_BY_CHARACTER:
         console.log('Do filtering by character');
-        search = [search, domainConstants.URL_SEARCH_COMICS_BY_CHARACTER + '='
-        + this.state.term].join('&');
-        this.context.router.push(`${this.props.location.pathname}?${search}`);
+        newQuery[domainConstants.URL_SEARCH_COMICS_BY_CHARACTER] = this.state.term;
 
         break;
       case domainConstants.FILTER_TYPES.COMICS_BY_SERIES:
         console.log('Do filtering by series');
-        search = [search, domainConstants.URL_SEARCH_COMICS_BY_SERIES + '='
-        + this.state.term].join('&');
-        console.log(`${this.props.location.pathname}?${search}`);
-        this.context.router.push(`${this.props.location.pathname}?${search}`);
+        newQuery[domainConstants.URL_SEARCH_COMICS_BY_SERIES] = this.state.term;
         break;
       default:
         console.log('No Filtering criteria');
     }
+
+    var search = createSearchStringFromArgs(newQuery);
+    this.context.router.push(`${this.props.location.pathname}?${search}`);
   }
 
   render() {
