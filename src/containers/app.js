@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router";
 import {connect} from "react-redux";
 
-export default class App extends Component {
+ class App extends Component {
   render() {
     const pathname = this.props.location ? this.props.location.pathname : "";
 
